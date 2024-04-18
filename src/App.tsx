@@ -1,11 +1,13 @@
 import styled from 'styled-components';
 import './App.css';
-import { Container } from './components/Container';
+import { Main } from './layout/Main';
+import { Header } from './layout/Header';
 
 function App() {
   return (
     <div className="App">
-      <Container />
+      <Header />
+      <Main />
     </div>
   );
 }
