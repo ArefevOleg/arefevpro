@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <Container>
       <HeaderWrapper>
-        <MainTatle>Сайт в разработке</MainTatle>
+        <MainTatle>Сайт&nbsp; в&nbsp; разработке</MainTatle>
       </HeaderWrapper>
     </Container>
   );
