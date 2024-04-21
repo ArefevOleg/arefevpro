@@ -20,7 +20,7 @@ const HeaderWrapper = styled.div`
 `;
 
 const MainTatle = styled.h1`
-font-size: calc( (100vw - 480px)/(1280 - 480) * (50 - 24) + 24px);
+font-size: calc( (100vw - 480px)/(1280 - 480) * (60 - 24) + 24px);
 font-family: "Rubik Doodle Shadow", system-ui;
   font-weight: 400;
   font-style: normal;
