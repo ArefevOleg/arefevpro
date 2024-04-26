@@ -22,6 +22,7 @@ const ImgWrapper = styled.div `
   
 `
 
+
 const Photo = styled.img`
   width: 100%;
 `
