@@ -1,7 +1,7 @@
+import "./App.css";
+import { Main } from "./layout/Main";
+import { Header } from "./layout/Header";
 
-import './App.css';
-import { Main } from './layout/Main';
-import { Header } from './layout/Header';
 
 function App() {
   return (
