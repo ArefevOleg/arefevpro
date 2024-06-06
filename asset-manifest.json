@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/arefevpro/static/css/main.978a4c42.css",
+    "main.js": "/arefevpro/static/js/main.20e7c8c4.js",
+    "static/js/453.54bfa669.chunk.js": "/arefevpro/static/js/453.54bfa669.chunk.js",
+    "static/media/3d-grunge-room-interior-with-spotlight-smoky-atmosphere-background.jpg": "/arefevpro/static/media/3d-grunge-room-interior-with-spotlight-smoky-atmosphere-background.81d89fd018c81a6149fc.jpg",
+    "static/media/Remove-bg.ai_1714069446173.png": "/arefevpro/static/media/Remove-bg.ai_1714069446173.a8e56dba3e3f4c239bc8.png",
+    "index.html": "/arefevpro/index.html",
+    "main.978a4c42.css.map": "/arefevpro/static/css/main.978a4c42.css.map",
+    "main.20e7c8c4.js.map": "/arefevpro/static/js/main.20e7c8c4.js.map",
+    "453.54bfa669.chunk.js.map": "/arefevpro/static/js/453.54bfa669.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.978a4c42.css",
+    "static/js/main.20e7c8c4.js"
+  ]
+}
