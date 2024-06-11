@@ -1,22 +1,19 @@
 import styled from "styled-components";
-import { Container } from "../components/Container";
 
 export const Header = () => {
   return (
-    <Container>
       <HeaderWrapper>
         <MainTatle>Сайт&nbsp; в&nbsp; разработке</MainTatle>
       </HeaderWrapper>
-    </Container>
   );
 };
 
 const HeaderWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 150px;
-  background-color: #0e0d0d;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: rgba(14, 13, 13, 0);
 `;
 
 const MainTatle = styled.h1`

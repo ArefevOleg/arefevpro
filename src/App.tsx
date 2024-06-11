@@ -1,12 +1,11 @@
 import "./App.css";
 import { Main } from "./layout/Main";
-import { Header } from "./layout/Header";
+import styled from "styled-components";
 
 
 function App() {
   return (
-    <div className="App">
-      <Header />
+    <div>
       <Main />
     </div>
   );

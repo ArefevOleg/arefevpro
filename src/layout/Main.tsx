@@ -1,33 +1,52 @@
 import styled from "styled-components";
 import photo from "../img/Remove-bg.ai_1714069446173.png";
-import pattern9 from "../img/3d-grunge-room-interior-with-spotlight-smoky-atmosphere-background.jpg"
-import {VideoBackground} from "../components/VideoBackground";
-
+import videoSrc from "../video/bgVideo.mp4";
+import {Header} from "./Header";
 
 
 export const Main = () => {
-  return (
-      <Section>
-          <VideoBackground />
-          <ImgWrapper>
-              <Photo src={photo} alt=""/>
-          </ImgWrapper>
-      </Section>
-  );
+    return (
+        <div>
+            <Header />
+            <img src={photo} alt=""/>
+            <Wrapper>
+                <Video autoPlay muted loop playsInline>
+                    <source src={videoSrc} type="video/mp4" />
+                </Video>
+            </Wrapper>
+        </div>
+    );
 };
 
-const Section = styled.section`
-    display: flex;
-    height: 75vh;
-    justify-content: flex-start;
-    align-items: flex-start;
-        /* background-image: url(${pattern9}); */
-`;
+const Wrapper = styled.div`
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+`
 
-const ImgWrapper = styled.div`
+const Video = styled.video`
+    position: absolute;
+   
+    
+    @media (min-aspect-ratio: 16/9) {
+        width: 100%;
+        height: auto;
+    }
 
-`;
+    @media (max-aspect-ratio: 16/9) {
+        width: auto;
+        height: 100%;
+    }
 
-const Photo = styled.img`
-    width: 60%;
-`;
+    @media (max-width: 767px) {
+        display: none;
+    }
+`
+
