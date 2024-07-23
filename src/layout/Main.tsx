@@ -8,7 +8,7 @@ export const Main = () => {
     return (
         <div>
             <Header />
-            <img src={photo} alt=""/>
+            <Img src={photo} alt=""/>
             <Wrapper>
                 <Video autoPlay muted loop playsInline>
                     <source src={videoSrc} type="video/mp4" />
@@ -49,4 +49,20 @@ const Video = styled.video`
         display: none;
     }
 `
+const Img = styled.img`
+    position: absolute;
+    
+    @media (min-aspect-ratio: 16/9) {
+        width: 70%;
+        height: auto;
+    }
 
+    @media (max-aspect-ratio: 16/9) {
+        width: auto;
+        height: 70%;
+    }
+
+    @media (max-width: 480px) {
+        display: none;
+    }
+`
