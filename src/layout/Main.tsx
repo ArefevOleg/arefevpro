@@ -1,14 +1,10 @@
-import React, {Component} from 'react';
-import styles from "../styles/main.module.css"
+import React from 'react';
 
+export const Main = () => {
+    return (
+        <div>
 
+        </div>
+    );
+};
 
-export class Main extends Component {
-    render() {
-        return (
-            <div className={styles.mainWrapper}>
-
-            </div>
-        );
-    }
-}
