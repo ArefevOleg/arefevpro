@@ -1,33 +1,39 @@
-import {useEffect} from "react";
-import CLOUDS from "vanta/src/vanta.fog"
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import styles from "./styles/app.module.css"
-import img from "./img/bb.png"
+import {Main} from "./layout/Main";
+import {Blog} from "./layout/Blog";
+import {VantaEffect} from "./components/VantaEffect";
+import { Overlay } from "./components/Overlay";
 
-function App() {
-    useEffect(() => {
-        CLOUDS({
-            el: '#vanta',
-            mouseControls: true,
-            touchControls: true,
-            gyroControls: false,
-            minHeight: 200.00,
-            minWidth: 200.00,
-            highlightColor: 0x340ee8,
-            midtoneColor: 0x18181b,
-            lowlightColor: 0xc0cc5,
-            baseColor: 0x70707,
-            blurFactor: 0.45,
-            speed: 0.80,
-            zoom: 0.80
-        })
-    }, []);
 
-  return (
-    <div className={styles.app}>
-        <div className={styles.bg} id="vanta">
-        </div>
-    </div>
-  );
-}
+const App: React.FC = () => {
+    return (
+        <Router>
+            <div className={styles.app}>
+                <VantaEffect>
+                    <div className={styles.bg}>
+                        {/* Ваш дополнительный код здесь */}
+                        <nav>
+                            <ul>
+                                <li>
+                                    <Link to="/">Main</Link>
+                                </li>
+                                <li>
+                                    <Link to="/about">Blog</Link>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </VantaEffect>
+
+                <Routes>
+                    <Route path="/" element={<Main />} />
+                    <Route path="/about" element={<Blog />} />
+                </Routes>
+            </div>
+        </Router>
+    );
+};
 
 export default App;

@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from "../styles/main.module.css"
+import styles from "../styles/blog.module.css"
 
-export const Main = () => {
+export const Blog = () => {
     return (
         <div className={styles.mainWrapper}>
             The container element.
@@ -48,4 +48,3 @@ export const Main = () => {
         </div>
     );
 };
-
