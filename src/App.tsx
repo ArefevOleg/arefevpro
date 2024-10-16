@@ -5,33 +5,33 @@ import {Main} from "./layout/Main";
 import {Blog} from "./layout/Blog";
 import {VantaEffect} from "./components/VantaEffect";
 import { Overlay } from "./components/Overlay";
+import data from "../src/data/data.json"
+import {Data} from "./types/data"
+import {Header} from "./layout/Header";
 
 
 const App: React.FC = () => {
     return (
         <Router>
-            <div className={styles.app}>
-                <VantaEffect>
-                    <div className={styles.bg}>
-                        {/* Ваш дополнительный код здесь */}
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/">Main</Link>
-                                </li>
-                                <li>
-                                    <Link to="/about">Blog</Link>
-                                </li>
-                            </ul>
-                        </nav>
-                    </div>
-                </VantaEffect>
-
+            <Overlay>
+            <div className="apppp">
+                <Header/>
                 <Routes>
-                    <Route path="/" element={<Main />} />
-                    <Route path="/about" element={<Blog />} />
+                    {data.navTitle.map((item) => {
+                        const sectionData = data[item.id as keyof Data];
+                        if (sectionData) {
+                            return (
+                                <Route
+                                    key={item.id}
+                                    path={item.href}
+                                    element={<Main  data={sectionData}/>}
+                                />
+                            );
+                        }
+                    })}
                 </Routes>
             </div>
+            </Overlay>
         </Router>
     );
 };
