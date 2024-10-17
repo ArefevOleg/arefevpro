@@ -2,6 +2,7 @@
     position: relative;
     width: 100%;
     height: 100vh;
+    overflow: hidden; /* Добавляем, чтобы контент не выходил за пределы контейнера */
 }
 
 .overlay {
@@ -15,6 +16,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: height 0.5s ease, opacity 0.5s ease; /* Добавляем переходы */
+}
+
+.overlay.hidden {
+    height: 0;
+    opacity: 0;
 }
 
 .overlayContent {

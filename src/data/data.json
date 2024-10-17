@@ -1,98 +1,44 @@
 
 
-{ "navTitle": [
-  {
-    "id": "AboutMe",
-    "title": "About Me",
-    "href": "#AboutMe"
-  },
-  {
-    "id": "Projects",
-    "title": "Projects",
-    "href": "#Projects"
-  },
-  {
-    "id": "Photo",
-    "title": "Photo",
-    "href": "#Photo"
-  },
-  {
-    "id": "Portfolio",
-    "title": "Portfolio",
-    "href": "#Portfolio"
+{
+  "portfolio": {
+    "navigation": {
+      "items": [
+        {
+          "title": "About Me",
+          "link": "#about-me"
+        },
+        {
+          "title": "Projects",
+          "link": "#projects"
+        },
+        {
+          "title": "Study",
+          "link": "#study"
+        },
+        {
+          "title": "Blog",
+          "link": "#blog"
+        }
+      ]
+    },
+    "content": {
+      "aboutMe": {
+        "title": "About Me",
+        "description": "<p>Welcome to my portfolio! I am a passionate developer with a love for creating innovative solutions. With years of experience in various programming languages and technologies, I strive to deliver high-quality software that meets the needs of my clients.</p>"
+      },
+      "projects": {
+        "title": "Projects",
+        "description": "<p>Here you can find some of my recent projects. I have worked on a variety of projects, ranging from web applications to mobile apps. Each project presents a unique challenge and an opportunity to learn and grow as a developer.</p>"
+      },
+      "study": {
+        "title": "Study",
+        "description": "<p>Education is a key component of my personal and professional development. I have completed several courses and certifications in computer science and related fields. I am always looking to expand my knowledge and stay up-to-date with the latest trends and technologies.</p>"
+      },
+      "blog": {
+        "title": "Blog",
+        "description": "<p>In my blog, I share my thoughts and experiences on various topics related to software development, technology, and personal growth. I hope that my insights and stories will be helpful and inspiring to others who are on a similar journey.</p>"
+      }
+    }
   }
-],
-
-  "AboutMe": [
-    {
-      "id": "Hobby",
-      "title": "Хобби",
-      "content": "<p>Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст</p>"
-    },
-    {
-      "id": "Work",
-      "title": "Работа",
-      "content": "<p>Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст</p>"
-    },
-    {
-      "id": "Study",
-      "title": "Учёба",
-      "content": "<p>Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст</p>"
-    }
-  ],
-
-  "Projects": [
-    {
-      "id": "Project1",
-      "title": "Project1",
-      "content": "<p>Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта </p>"
-    },
-    {
-      "id": "Project2",
-      "title": "Project2",
-      "content": "<p>Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта </p>"
-    },
-    {
-      "id": "Project3",
-      "title": "Project3",
-      "content": "<p>Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта Описание проекта </p>"
-    }
-  ],
-
-  "Photo": [
-    {
-      "id": "Block1",
-      "title": "Block1",
-      "content": "<p><p>Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст</p></p>"
-    },
-    {
-      "id": "Block2",
-      "title": "Block2",
-      "content": "<p><p>Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст</p></p>"
-    },
-    {
-      "id": "Block3",
-      "title": "Block3",
-      "content": "<p><p>Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст Здесь будет текст</p></p>"
-    }
-  ],
-
-  "Portfolio": [
-    {
-      "id": "Block1",
-      "title": "Block1",
-      "content": "<p>img img img img img img img img img img img img img</p>"
-    },
-    {
-      "id": "Block2",
-      "title": "Block2",
-      "content": "<p>img img img img img img img img img img img img img</p>"
-    },
-    {
-      "id": "Block3",
-      "title": "Block3",
-      "content": "<p>img img img img img img img img img img img img img</p>"
-    }
-  ]
-
 }

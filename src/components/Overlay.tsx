@@ -33,6 +33,7 @@ export const Overlay: React.FC<OverlayProps> = ({ children }) => {
         setVantaEffectVisible(false);
     };
 
+
     return (
         <div ref={vantaRef} className={styles.overlayContainer} id="vanta">
             {isVantaEffectVisible && (

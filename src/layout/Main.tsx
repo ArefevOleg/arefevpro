@@ -1,21 +1,34 @@
 import React from 'react';
-import styles from "../styles/main.module.css"
-import {ContentItem} from "../types/data";
+import dataTS from '../data/dataTS';
+import styles from "../styles/main.module.css";
 
-interface ContentProps {
-    data: ContentItem[];
+interface ContentSection {
+    title: string;
+    description: string;
 }
 
-export const Main = ({ data }: ContentProps) => {
+interface MainProps {
+    selectedItem: string | null;
+}
+
+export const Main: React.FC<MainProps> = ({ selectedItem }) => {
+    if (selectedItem === null) {
+        return <p className={styles.mainWrapper}>Select a section to view its content.</p>;
+    }
+
+    const contentKey = selectedItem.toLowerCase().replace(' ', '-') as keyof typeof dataTS.content;
+    const content = dataTS.content[contentKey];
+
     return (
-        <div className="content">
-            {data.map((item) => (
-                <div key={item.id} className="content-block">
-                    <h2>{item.title}</h2>
-                    <div dangerouslySetInnerHTML={{ __html: item.content }} />
-                </div>
-            ))}
+        <div className={styles.mainWrapper}>
+            {content ? (
+                <>
+                    <h2>{content.title}</h2>
+                    <div dangerouslySetInnerHTML={{ __html: content.description }} />
+                </>
+            ) : (
+                <p>Content not found.</p>
+            )}
         </div>
     );
 };
-

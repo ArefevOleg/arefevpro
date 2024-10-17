@@ -1,24 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import styles from "../styles/nav.module.css"
-import {NavItem} from "../types/data";
+import dataTS from '../data/dataTS';
+import styles from "../styles/nav.module.css";
 
-
-interface NavProps {
-    navTitle: NavItem[];
+interface NavigationItem {
+    title: string;
+    link: string;
 }
 
+interface NavigationProps {
+    onItemClick: (item: NavigationItem) => void;
+}
 
-export const Navigation = ({ navTitle}: any) => {
+export const Navigation: React.FC<NavigationProps> = ({ onItemClick }) => {
     return (
         <nav>
-            <ul className="block-menu">
-                {navTitle.map((item: any) => (
-                    <li key={item.id}>
-                        <Link to={item.href}>{item.title}</Link>
+            <ul className={styles.wrapper}>
+                {dataTS.navigation.items.map((item) => (
+                    <li key={item.title} onClick={() => onItemClick(item)}>
+                        <Link to={item.link}>{item.title}</Link>
                     </li>
                 ))}
-                <div className="block-menu-wall"></div>
             </ul>
         </nav>
     );

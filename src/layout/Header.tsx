@@ -1,14 +1,16 @@
 import React from 'react';
-import data from "../data/data.json"
-import styles from "../styles/header.module.css"
-import {Navigation} from "../components/Navigation";
+import styles from "../styles/header.module.css";
+import { Navigation } from "../components/Navigation";
+import { NavigationItem } from "../data/dataTS";
 
+interface HeaderProps {
+    onItemClick: (item: NavigationItem) => void;
+}
 
-export const Header = () => {
+export const Header: React.FC<HeaderProps> = ({ onItemClick }) => {
     return (
         <div className={styles.mainWrapper}>
-            <Navigation navTitle={data.navTitle}/>
+            <Navigation onItemClick={onItemClick} />
         </div>
     );
 };
-
