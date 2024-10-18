@@ -11,6 +11,7 @@ html, body {
     overflow: hidden; /* Отключает вертикальную прокрутку */
 }
 
+
 body::-webkit-scrollbar {
     display: none; /* Для Chrome, Safari и Opera */
 }

@@ -1,84 +1,124 @@
-const canvas = document.getElementById('particleCanvas');
-const ctx = canvas.getContext('2d');
+import * as THREE from 'https://cdn.skypack.dev/three@0.134';
 
-// Initial canvas size
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+class Smoke {
 
-let particles = [];
-let particleCount = calculateParticleCount();
+  constructor(options) {
+    const defaults = {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
 
-class Particle {
-  constructor() {
-    this.reset();
-    this.y = Math.random() * canvas.height;
-    this.fadeDelay = Math.random() * 600 + 100;
-    this.fadeStart = Date.now() + this.fadeDelay;
-    this.fadingOut = false;
+    Object.assign(this, options, defaults);
+    this.onResize = this.onResize.bind(this);
+
+    this.addEventListeners();
+    this.init();
   }
 
-  reset() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.speed = Math.random() / 5 + 0.1;
-    this.opacity = 1;
-    this.fadeDelay = Math.random() * 600 + 100;
-    this.fadeStart = Date.now() + this.fadeDelay;
-    this.fadingOut = false;
+  init() {
+    const { width, height } = this;
+
+    this.clock = new THREE.Clock();
+
+    const renderer = this.renderer = new THREE.WebGLRenderer();
+
+    renderer.setSize(width, height);
+
+    this.scene = new THREE.Scene();
+
+    this.addCamera();
+    this.addLights();
+    this.addParticles();
+
+    document.body.appendChild(renderer.domElement);
+  }
+
+  evolveSmoke(delta) {
+    const { smokeParticles } = this;
+
+    let smokeParticlesLength = smokeParticles.length;
+
+    while(smokeParticlesLength--) {
+      smokeParticles[smokeParticlesLength].rotation.z += delta * 0.2;
+      smokeParticles[smokeParticlesLength].position.y += delta * 0.1;
+      smokeParticles[smokeParticlesLength].position.x += (Math.random() - 0.5) * delta * 2;
+    }
+  }
+
+  addLights() {
+    const { scene } = this;
+    const light = new THREE.DirectionalLight(0xffffff, 0.75);
+
+    light.position.set(-1, 0, 1);
+    scene.add(light);
+  }
+
+  addCamera() {
+    const { scene } = this;
+    const camera = this.camera = new THREE.PerspectiveCamera(75, this.width / this.height, 1, 10000);
+
+    camera.position.z = 1000;
+    scene.add(camera);
+  }
+
+  addParticles() {
+    const { scene } = this;
+    const textureLoader = new THREE.TextureLoader();
+    const smokeParticles = this.smokeParticles = [];
+
+    textureLoader.load('https://rawgit.com/marcobiedermann/playground/master/three.js/smoke-particles/dist/assets/images/clouds.png', texture => {
+      const smokeMaterial = new THREE.MeshLambertMaterial({
+        color: 0xffffff,
+        map: texture,
+        transparent: true
+      });
+      smokeMaterial.map.minFilter = THREE.LinearFilter;
+      const smokeGeometry = new THREE.PlaneBufferGeometry(300, 300);
+
+      const smokeMeshes = [];
+      let limit = 50; // Уменьшено количество частиц
+
+      while(limit--) {
+        smokeMeshes[limit] = new THREE.Mesh(smokeGeometry, smokeMaterial);
+        smokeMeshes[limit].position.set(Math.random() * 500 - 250, this.height * -0.3 - 150, Math.random() * 1000 - 100);
+        smokeMeshes[limit].rotation.z = Math.random() * 360;
+        smokeParticles.push(smokeMeshes[limit]);
+        scene.add(smokeMeshes[limit]);
+      }
+    });
+  }
+
+  render() {
+    const { renderer, scene, camera } = this;
+    this.renderer.render(this.scene, this.camera);
   }
 
   update() {
-    this.y -= this.speed;
-    if (this.y < 0) {
-      this.reset();
-    }
+    const delta = this.clock.getDelta();
+    this.evolveSmoke(delta);
+    this.render();
 
-    if (!this.fadingOut && Date.now() > this.fadeStart) {
-      this.fadingOut = true;
-    }
-
-    if (this.fadingOut) {
-      this.opacity -= 0.008;
-      if (this.opacity <= 0) {
-        this.reset();
-      }
-    }
+    requestAnimationFrame(this.update.bind(this));
   }
 
-  draw() {
-    ctx.fillStyle = `rgba(${255 - (Math.random() * 255/2)}, 255, 255, ${this.opacity})`;
-    ctx.fillRect(this.x, this.y, 0.4, Math.random() * 2 + 1);
+  onResize() {
+    const { camera } = this;
+
+    const windowWidth  = window.innerWidth;
+    const windowHeight = window.innerHeight;
+
+    camera.aspect = windowWidth / windowHeight;
+    camera.updateProjectionMatrix();
+
+    this.renderer.setSize(windowWidth, windowHeight);
   }
-}
 
-function initParticles() {
-  particles = [];
-  for (let i = 0; i < particleCount; i++) {
-    particles.push(new Particle());
+  addEventListeners() {
+    window.addEventListener('resize', this.onResize);
   }
+
 }
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particles.forEach(particle => {
-    particle.update();
-    particle.draw();
-  });
-  requestAnimationFrame(animate);
-}
+const smoke = new Smoke();
 
-function calculateParticleCount() {
-  return Math.floor((canvas.width * canvas.height) / 6000);
-}
-
-function onResize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-  particleCount = calculateParticleCount();
-  initParticles();
-}
-
-window.addEventListener('resize', onResize);
-
-initParticles();
-animate();
+smoke.update();
