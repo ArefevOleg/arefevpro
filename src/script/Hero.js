@@ -13,9 +13,8 @@ const Hero = () => {
         <h2>AREFEVPRO</h2>
         <div className="box">
           <img src={img} alt="img" className="centered-image"/>
-          {/*<div className="smoke-overlay">*/}
-          {/*  <Smoke />*/}
-          {/*</div>*/}
+          <div className="smoke-overlay">
+          </div>
         </div>
       </div>
     </div>
